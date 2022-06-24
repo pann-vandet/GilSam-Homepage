@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title> GilSam</title>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="assets/plugin/DataTable/css/dataTables.bootstrap4.min.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/app.css" />
+</head>
+
+<body>
+    <!-- START HEAD SECTION -->
+    <section>
+        <div class="home-head">
+            <div class="home-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <a class="navbar-brand" href="#">
+                            <img src="assets/img/logo.png" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login.html">Log in</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn-link mg-l-30" href="register.html" tabindex="-1" aria-disabled="true">Create an account</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HEAD SECTION -->
+    <section class="pad-top-7">
+        <div class="container">
+            <div class="row bd-wrap">
+                <div class="search-form">
+                    <form name="search_form" id="search_form" method="post" action="#">
+                        <div class="form-group">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Ex: 도시 - 구 - 동 " required="">
+                        </div>
+                    </form>
+                </div>
+                <div class="map-search">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10878.035360939675!2d127.12475916789394!3d35.84755037962087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35702334621b3bb9%3A0xd2ef0eee158844e1!2sJeonBuk%20National%20University!5e0!3m2!1sen!2skr!4v1581571832535!5m2!1sen!2skr" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+                <div class="form-wrapper">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="survey-tap" data-toggle="tab" href="#survey" role="tab" aria-controls="survey" aria-selected="true">Survey Form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="results-tap" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">Recorded Results</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="survey" role="tabpanel" aria-labelledby="survey-tap">
+                            <div class="form-element mt-3">
+                                <form>
+                                    <div class="row">
+                                        <!-- survey-form left -->
+                                        <div class=" col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Featured
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-sm-6 col-md-6">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text form-control-sm">마을이름</div>
+                                                                </div>
+                                                                <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-md-6">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text form-control-sm">주소</div>
+                                                                </div>
+                                                                <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-md-6">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text form-control-sm">위도</div>
+                                                                </div>
+                                                                <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-md-6">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text form-control-sm">경도</div>
+                                                                </div>
+                                                                <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <label for="validationCustom01">마을의 인구</label>
+                                                    <div class="form-row">
+                                                        <div class="col-6 col-sm-3 col-md-3 mb-3">
+                                                            <label class="sr-only" for="inlineFormInputGroupUsername"></label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text form-control-sm">세대수</div>
+                                                                </div>
+                                                                <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h6>남성</h6>
+                                                            <div class="form-row fm">
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fm-org">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text form-control-sm">유아</div>
+                                                                        </div>
+                                                                        <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <h6>남성</h6>
+                                                        <div class="form-row ff">
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="fm-org">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                                    </div>
+                                                                    <input type="number" class="form-control form-control-sm" id="inlineFormInputGroupUsername">
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end survey-form left -->
+                                        <!-- survey-form right -->
+                                        <div class=" col-md-12">
+                                        </div>
+                                        <!-- end survey-form right -->
+                                        <div class="img-wrapper">
+                                            <div class="card-columns">
+                                                <div class="card">
+                                                    <div class="img-gallary-transition">
+                                                        <img class="card-img-top" src="https://directoryfinder.net/demo/business-directory-template/images/services/9431pexels-photo-208736.jpeg" alt="Card image cap">
+                                                        <span class="color-overlay"></span>
+                                                        <span><i class="fa fa-times"></i></span>
+                                                        <span>
+                                                            <label for="file-input"><i class="fa fa-image"></i></label>
+                                                            <input id="file-input" type="file" />
+                                                        </span>
+                                                        <span><i class="fa fa-check-square"></i></span>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" placeholder="Image description" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="img-gallary-transition">
+                                                        <div class="embed-responsive embed-responsive-21by9">
+                                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                                                        </div>
+                                                        <span class="color-overlay"></span>
+                                                        <span class=""><i class="fa fa-times"></i></span>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" placeholder="Image description" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-center">
+                                                <button class="btn btn-primary btn-action" type="submit">정보 저장</button>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tap">
+                            <div class="form-head">
+                                <div class="form-title">
+                                    <h4> 조사 된 정보 </h4>
+                                </div>
+                                <div class="search-form">
+                                    <form name="search_form" id="search_form" method="post" action="#">
+                                        <div class="form-group">
+                                            <input type="text" name="search" id="search" class="form-control" placeholder="Ex: 도시 - 구 - 동 " required="">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-list">
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">기록 날짜</th>
+                                            <th scope="col">마을이름</th>
+                                            <th scope="col">주소</th>
+                                            <th scope="col">위치</th>
+                                            <th scope="col" class="text-center">마을 전경 / 자세보기/ 수성 / 삭제</th> 정보
+                                        </tr>
+                                    </thead>
+                                    <tbody class="list-wrapper">
+                                        <!--  Lists are displayed hare -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Image modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">그림 추가</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="add-image">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugin/DataTable/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/plugin/DataTable/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $('#example').DataTable();
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    </script>
+</body>
+
+</html>

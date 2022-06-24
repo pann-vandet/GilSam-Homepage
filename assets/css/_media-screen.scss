@@ -1,0 +1,71 @@
+@media screen and (max-width: 991px) {}
+
+@media screen and (max-width: 768px) {
+    .log-main {
+        width: 100%;
+    }
+
+    .list-view {
+        .card {
+            .media {
+                display: block;
+
+                .media-img {
+                    width: 100%;
+                    margin-bottom: 10px;
+
+                    .img-gallary-transition {
+                        height: 200px;
+                    }
+                }
+
+                .media-body {
+                    width: 100%;
+                }
+            }
+
+
+        }
+    }
+
+    .form-element {
+        .fm-org {}
+
+    }
+
+    .table-search {
+        .input-group{
+            width: 70%;
+        }
+    }
+
+    // .image-gallery {
+    //     ul {
+    //         webkit-overflow-scrolling: touch;
+    //         font-size: 0;
+    //         overflow-x: auto;
+    //         white-space: nowrap;
+    //     }
+    // }
+
+    // custom select2
+    span.select2.select2-container.select2-container--default,
+    span.select2.select2-container.select2-container--default.select2-container--below,
+    span.select2.select2-container.select2-container--default.select2-container--below.select2-container--open {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .form-element {
+
+        .fm,
+        .ff {
+            .fm-org {
+                width: 50%;
+            }
+        }
+
+    }
+}

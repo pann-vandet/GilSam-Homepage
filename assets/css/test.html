@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="pad-top-7">
+    <div class="container">
+        <div class="row bd-wrap">
+
+            <div class="search-form">
+                <div class="form-group">
+                    <input type="text" name="search" id="search" class="form-control" placeholder="Ex: 도시 - 구 - 동 "
+                           required="">
+                </div>
+
+            </div>
+            <div class="map-search">
+                <div id="drawingMap"></div>
+            </div>
+
+            <div class="form-wrapper">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="survey-tap" data-toggle="tab" href="#survey" role="tab"
+                           aria-controls="survey" aria-selected="true">Survey Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="results-tap" data-toggle="tab" href="#results" role="tab"
+                           aria-controls="results" aria-selected="false">Recorded Results</a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show active" id="survey" role="tabpanel" aria-labelledby="survey-tap">
+
+                        <div class="form-element mt-3">
+
+                            <form action="/upload_village" method="post" enctype=multipart/form-data name="basic_info"
+                                  id="uploadForm">
+                                <div class="row">
+                                    <!-- survey-form left -->
+                                    <div class="col-md-4">
+                                        <!-- <h4>마을의 인구</h4> -->
+                                        <div class="form-group">
+                                            <label>마을이름</label>
+                                            <input type="text" class="form-control" id="villagename" name="villagename"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>주소</label>
+                                            <input type="text" class="form-control" id="address" name="address"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>위도</label>
+                                            <input type="text" class="form-control" id="latitude" name="latitude"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>경도</label>
+                                            <input type="text" class="form-control" id="longitude" name="longitude"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <!-- end survey-form left -->
+                                    <!-- survey-form right -->
+                                    <div class="col-md-8">
+
+                                        <label>마을의 인구</label>
+
+                                        <div class="form-row">
+                                            <div class="col-6 col-sm-3 col-md-3 mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">세대수</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           name="num_family" id="num_family" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sm-title"><h6>여성</h6></div>
+
+                                        <div class="form-row">
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm"
+                                                           id="f-infant" name="f-infant" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">10대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-ten" name="f-ten" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">20대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-twenty" name="f-twenty" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">30대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-thirty" name="f-thirty" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">40대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-forty" name="f-forty" value="0">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">50대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-fifty"
+                                                           name="f-fifty" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">60대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" required
+                                                           id="f-sixty" value="0"
+                                                           name="f-sixty">
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">70대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           name="f-seventy" id="f-seventy" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">80대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           name="f-eighty" id="f-eighty" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">90대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="f-ninety" name="f-ninety" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sm-title"><h6>남성</h6>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">유아</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="infant" name="infant" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">10대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="ten" name="ten" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">20대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="twenty" name="twenty" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">30대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="thirty" name="thirty" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">40대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="forty" name="forty" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">50대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" id="fifty"
+                                                           value="0"
+                                                           name="fifty" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">60대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" id="sixty"
+                                                           value="0"
+                                                           name="sixty" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">70대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           name="seventy" id="seventy" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">80대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           name="eighty" id="eighty" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg mb-3">
+                                                <label class="sr-only"></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text form-control-sm">90대</div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-sm" value="0"
+                                                           id="ninety" name="ninety" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end survey-form right -->
+                                    <div class="img-wrapper">
+
+                                        <div class="card-columns">
+
+                                            <div id="insert_images">
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class='loading-img' id='loadingmessage'>
+                                            <img src='../static/icons/loading.gif'>
+                                        </div>
+                                        <input type='hidden' name='total_count' id="total_count" value=0>
+
+                                        <div class="form-group">
+                                            <label>마을의 사진:</label>
+                                            <button type="button" class="btn btn-sm btn-primary" id="start_img_modal"
+                                                    data-toggle="modal"
+                                                    data-target="#uploadImageModal">그림 추가
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-center">
+                                        <input class="btn btn-primary btn-action" type="submit" value="정보 저장">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tap">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class=" alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <!--                        search record-->
+<!--                        <div class="form-head">-->
+<!--                            <div class="search-form">-->
+<!--                                <form name="search_form" id="search_item" method="post" action="#">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <input type="text" name="item-search" id="item-search" class="form-control"-->
+<!--                                               placeholder="Ex: 마을 이름,  환경 " required="">-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="table-responsive table-list">
+
+                            {% if vs %}
+                            <table class="table table-hover table-sm" id="brief_table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">기록 날짜</th>
+                                    <th scope="col">마을이름</th>
+                                    <th scope="col">주소</th>
+                                    <th scope="col">위치</th>
+                                    <th scope="col" class="text-center">선택권</th>
+                                </tr>
+                                </thead>
+                                <tbody class="list-wrapper">
+                                <!--  Lists are displayed hare -->
+
+                                <input type="hidden" id="vs_num" value="{{ vs|length }}">
+                                {% for v in vs %}
+                                <tr>
+                                    <input type="hidden" id="v_id-{{loop.index}}" value="{{v.id}}">
+                                    <td>{{v.timestamp}}</td>
+                                    <td id="vname-{{loop.index}}">{{v.villagename}}</td>
+                                    <td id="vaddress-{{loop.index}}">{{v.address}}</td>
+                                    <td>
+                                        <span>lat:</span><span id="lat-{{loop.index}}">{{v.latitude}}</span><br>
+                                        <span>long:</span><span id="long-{{loop.index}}">{{v.longitude}}</span></td>
+
+                                    <td class="text-center">
+                                        <span
+                                              title="마을 전경">
+                                            <button class="btn btn-success btn-sm" type="button"
+                                                    data-toggle="modal" role="button" aria-pressed="true"
+                                                    data-target="#modal-{{v.id}}"><i
+                                                    class="fa fa-eye"> </i></button>
+                                        </span>
+
+                                        <!-- village image view Modal -->
+                                        <div class="modal fade" id="modal-{{v.id}}" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title" id="ModalLongTitle">마을 전경</h3>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {% for img in v.images %}
+
+                                                        <p>
+                                                            <img style='display: block; margin-right: auto; width: 100%'
+                                                                 src="../static/images/villages/{{img.img_url}}">
+                                                        </p>
+
+                                                        <p> {{img.img_description}}</p>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of village view Modal -->
+
+
+                                        <a href="{{ url_for('detail_info', v_id=v.id)}}" type="button"
+                                           class="btn btn-info btn-sm"><i
+                                                class="fa fa-info-circle" data-toggle="tooltip" data-placement="top"
+                                                title="자세보기"> </i></a>
+                                        <a href="{{url_for('edit_detail', vid=v.id)}}" type="button"
+                                           class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top"
+                                           title="수성"><i class="fa fa-edit"> </i></a>
+                                        <a data-title="Delete Confirmation"
+                                           data-content="Click ok to delete {{v.villagename}}!"
+                                           href="{{url_for('delete_village', v_id=v.id)}}" type="button"
+                                           class="btn btn-danger btn-sm delv"><i
+                                                class="fa fa-trash" data-toggle="tooltip" data-placement="top"
+                                                title="삭제"></i> </i></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Village View Image modal -->
+<div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">그림 추가</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><input type='file' name='file[]' id="gallery-photo-add" multiple="multiple"></p>
+                <p>
+                <div class="gallery"></div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add-image">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Detail Image Modal-->
+<!--<div class="modal fade" id="uploadDetailImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="myModalLongTitle">그림 추가</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <p><input type='file' name='file[]' id="gallery-detail-photo-add" multiple="multiple"></p>-->
+<!--                <p>-->
+<!--                <div class="detail-gallery"></div>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" id="add-detail-image">Continue</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+{% endblock %}
